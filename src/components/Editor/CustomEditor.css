@@ -1,0 +1,9 @@
+.Draftail-Editor {
+  background-color: #fff;
+  border: none !important;
+  border-radius: 1px;
+}
+
+.Draftail-block--code-block {
+  background-color: rgb(197, 197, 197);
+}

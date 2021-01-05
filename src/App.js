@@ -70,7 +70,7 @@ function App() {
 
   return (
     <div className="App flex justify-center">
-      <div className="w-full lg:w-7/12 xl:w-6/12">
+      <div className="w-full">
         <BrowserRouter>
           <context.Provider
             value={{
