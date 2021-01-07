@@ -15,15 +15,20 @@ const Header = (props) => {
 
   return (
     <nav className="py-1 flex flex-row justify-center items-center w-full shadow-lg">
-      <div className="w-full max-w-screen-lg mx-auto px-2 flex flex-row justify-between items-center bg-green-300">
+      <div className="w-full max-w-screen-lg mx-auto px-2 flex flex-row justify-between items-center">
         <ul className="flex flex-row items-center my-3">
           <li className="mx-3 hover:text-indigo-600 active:text-indigo-600">
             <Link to="/">Home</Link>
           </li>
           {user && (
-            <li className="mx-3 hover:text-indigo-600 active:text-indigo-600">
-              <Link to="/dashboard">Dashboard</Link>
-            </li>
+            <React.Fragment>
+              <li className="mx-3 hover:text-indigo-600 active:text-indigo-600">
+                <Link to="/dashboard">Dashboard</Link>
+              </li>
+              <li className="mx-3 hover:text-indigo-600 active:text-indigo-600">
+                <Link to="/write">Write Post</Link>
+              </li>
+            </React.Fragment>
           )}
         </ul>
         {user ? (

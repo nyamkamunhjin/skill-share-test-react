@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   BrowserRouter,
   Switch,
@@ -17,6 +17,7 @@ import Cookies from 'universal-cookie';
 import Register from './components/Auth/Register.js';
 import Dashboard from './components/Dashboard/Dashboard';
 import Post from './components/Post/Post';
+import WritePost from './components/WritePost/WritePost';
 
 function App() {
   const [token, setToken] = useState(null);
@@ -82,13 +83,22 @@ function App() {
             }}
           >
             <Header />
-            <Switch>
-              <Route path="/" component={Home} exact />
-              <Route path="/login" component={Login} />
-              <Route path="/register" component={Register} />
-              <Route path="/dashboard" component={Dashboard} />
-              <Route path="/post/:id" component={Post} />
-            </Switch>
+            <div className="w-full flex justify-center">
+              <div className="w-full max-w-screen-md">
+                <Switch>
+                  <Route path="/" component={Home} exact />
+                  <Route path="/login" component={Login} />
+                  <Route path="/register" component={Register} />
+                  <Route path="/post/:id" component={Post} />
+                  {user && (
+                    <React.Fragment>
+                      <Route path="/write" component={WritePost} />
+                      <Route path="/dashboard" component={Dashboard} />
+                    </React.Fragment>
+                  )}
+                </Switch>
+              </div>
+            </div>
           </context.Provider>
         </BrowserRouter>
       </div>

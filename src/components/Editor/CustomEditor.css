@@ -5,5 +5,15 @@
 }
 
 .Draftail-block--code-block {
-  background-color: rgb(197, 197, 197);
+  padding: 0 0.5rem;
+  background-color: rgb(216, 216, 216);
+}
+
+.Draftail-Editor--readonly .DraftEditor-editorContainer {
+  opacity: 1;
+}
+
+.post-title .Draftail-block--unstyled {
+  font-size: 32pt;
+  font-weight: 800;
 }
