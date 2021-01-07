@@ -84,7 +84,7 @@ function App() {
           >
             <Header />
             <div className="w-full flex justify-center">
-              <div className="w-full max-w-screen-md">
+              <div className="w-full">
                 <Switch>
                   <Route path="/" component={Home} exact />
                   <Route path="/login" component={Login} />

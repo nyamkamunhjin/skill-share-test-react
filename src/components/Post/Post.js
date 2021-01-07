@@ -19,9 +19,9 @@ export default function Post() {
   }, [id]);
 
   return (
-    <div>
+    <div className="w-full">
       {post && (
-        <div className="mt-2">
+        <div className="mt-2 mx-auto max-w-screen-md">
           <CustomEditor readOnly={true} post={post} />
         </div>
       )}

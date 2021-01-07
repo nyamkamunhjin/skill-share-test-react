@@ -26,7 +26,7 @@ const Header = (props) => {
                 <Link to="/dashboard">Dashboard</Link>
               </li>
               <li className="mx-3 hover:text-indigo-600 active:text-indigo-600">
-                <Link to="/write">Write Post</Link>
+                <Link to="/write">Write</Link>
               </li>
             </React.Fragment>
           )}

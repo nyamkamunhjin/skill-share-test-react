@@ -39,7 +39,7 @@ const WritePost = (props) => {
   };
 
   return (
-    <div className=" h-screen">
+    <div className="mx-auto h-screen max-w-screen-md">
       <div className="flex p-2 justify-between">
         <h1>Write a story</h1>
         <button className="btn-indigo" onClick={handleSubmit}>

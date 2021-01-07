@@ -10,12 +10,9 @@ import context from '../../context/context';
 
 const Register = (props) => {
   const emailElRef = useRef('');
-  // const userTypeElRef = useRef('');
   const passwordElRef = useRef('');
-  // const avatar = useRef('');
   const firstNameElRef = useRef('');
   const lastNameElRef = useRef('');
-  // const addressElRef = useRef('');
 
   const history = useHistory();
   const { logIn } = useContext(context);
@@ -38,10 +35,10 @@ const Register = (props) => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen bg-indigo-200">
+    <div className="flex flex-col justify-center items-center h-screen">
       <p className="text-3xl">Register</p>
       <form
-        className="group w-full md:w-5/12 lg:w-3/12 p-5 border rounded-xl border-opacity-50 m-5 border-indigo-500 transition-all hover:bg-white hover:shadow-lg hover:border-transparent"
+        className="group w-96 p-5 border rounded-xl border-opacity-50 m-5 border-indigo-500 transition-all hover:bg-white hover:shadow-lg hover:border-transparent"
         onSubmit={(e) => handleLogin(e)}
       >
         <div className="mb-4">

@@ -23,5 +23,19 @@ const getPostById = async (id) => {
   );
 };
 
+const searchPost = async (search, limit) => {
+  return await resolver(
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/post/search`, {
+        params: {
+          query: search,
+          limit,
+        },
+      })
+      .then((res) => res.data)
+      .catch((err) => err.response.data)
+  );
+};
+
 // eslint-disable-next-line import/no-anonymous-default-export
-export default { addPost, getPostById };
+export default { addPost, getPostById, searchPost };

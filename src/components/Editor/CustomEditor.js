@@ -92,7 +92,7 @@ const CustomEditor = ({
   }, []);
 
   return (
-    <div className="hover:bg-white shadow-lg border-transparent">
+    <div className="hover:bg-white shadow-lg border-transparent max-w-screen-md">
       <div className="post-title">
         <DraftailEditor
           stripPastedStyles={true}
