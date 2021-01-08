@@ -3,6 +3,7 @@ import { HiSearch } from 'react-icons/hi';
 import { useHistory } from 'react-router-dom';
 import PostAPI from '../../api/PostAPI';
 import { formatDate } from '../../functions';
+import PostView from '../PostView/PostView';
 /**
  * @author
  * @function Home
@@ -20,9 +21,9 @@ const Home = (props) => {
 
   return (
     <div className="flex flex-col items-center">
-      <div className="bg-purple-500 w-full pt-10 flex flex-col items-center">
+      <div className="bg-purple-500 w-full pt-10 flex flex-col items-center p-2">
         <p className="text-5xl font-bold">Posts</p>
-        <div className="w-96 m-4">
+        <div className="w-full max-w-sm m-4">
           <span className="absolute p-2">
             <HiSearch className="text-2xl text-gray-400" />
           </span>
@@ -39,26 +40,10 @@ const Home = (props) => {
           />
         </div>
       </div>
-      <div className="mt-5">
+      <div className="mt-1 px-2 w-full max-w-screen-sm">
         {results.length !== 0 &&
           results.map((result, index) => (
-            <div
-              key={index}
-              className="bg-green-300 rounded-md m-2 p-2 w-screen max-w-screen-sm flex flex-col items-start"
-            >
-              <p
-                className="text-2xl text-black font-bold hover:text-purple-400 cursor-pointer"
-                onClick={() => history.push(`/post/${result._id}`)}
-              >
-                {result.title}
-              </p>
-              <p>
-                <b>on {formatDate(result.createdAt)}</b>
-              </p>
-              <p>
-                By {result.author.firstName} {result.author.lastName}
-              </p>
-            </div>
+            <PostView result={result} key={`post-view-${index}`} />
           ))}
       </div>
     </div>

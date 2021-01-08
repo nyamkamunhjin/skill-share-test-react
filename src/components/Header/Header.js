@@ -33,7 +33,7 @@ const Header = (props) => {
         </ul>
         {user ? (
           <button
-            className="btn-indigo"
+            className="btn-indigo bg-red-500 hover:bg-red-600"
             onClick={() => logOut(() => history.push('/login'))}
           >
             Logout

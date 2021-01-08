@@ -37,5 +37,55 @@ const searchPost = async (search, limit) => {
   );
 };
 
+const adminGetPostById = async (id, token) => {
+  return await resolver(
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/post/pending/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => res.data)
+      .catch((err) => err.response.data)
+  );
+};
+
+const adminGetPosts = async (token) => {
+  return await resolver(
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/post/pending`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => res.data)
+      .catch((err) => err.response.data)
+  );
+};
+
+const adminUpdatePost = async (id, values, token) => {
+  return await resolver(
+    axios
+      .put(
+        `${process.env.REACT_APP_BACKEND_URL}/api/post/update/${id}`,
+        values,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => res.data)
+      .catch((err) => err.response.data)
+  );
+};
+
 // eslint-disable-next-line import/no-anonymous-default-export
-export default { addPost, getPostById, searchPost };
+export default {
+  addPost,
+  getPostById,
+  searchPost,
+  adminGetPostById,
+  adminGetPosts,
+  adminUpdatePost,
+};

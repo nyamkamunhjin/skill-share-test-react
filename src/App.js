@@ -17,6 +17,8 @@ import Cookies from 'universal-cookie';
 import Register from './components/Auth/Register.js';
 import Dashboard from './components/Dashboard/Dashboard';
 import Post from './components/Post/Post';
+import PendingPost from './components/Post/PendingPost';
+
 import WritePost from './components/WritePost/WritePost';
 
 function App() {
@@ -91,11 +93,10 @@ function App() {
                   <Route path="/register" component={Register} />
                   <Route path="/post/:id" component={Post} />
                   {user && (
-                    <React.Fragment>
-                      <Route path="/write" component={WritePost} />
-                      <Route path="/dashboard" component={Dashboard} />
-                    </React.Fragment>
+                    <Route path="/pending/:id" component={PendingPost} />
                   )}
+                  {user && <Route path="/write" component={WritePost} />}
+                  {user && <Route path="/dashboard" component={Dashboard} />}
                 </Switch>
               </div>
             </div>

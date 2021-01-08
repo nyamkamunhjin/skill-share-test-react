@@ -35,10 +35,10 @@ const Register = (props) => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center h-screen">
+    <div className="flex flex-col justify-center items-center h-screen px-2">
       <p className="text-3xl">Register</p>
       <form
-        className="group w-96 p-5 border rounded-xl border-opacity-50 m-5 border-indigo-500 transition-all hover:bg-white hover:shadow-lg hover:border-transparent"
+        className="group w-full max-w-sm p-5 border rounded-xl border-opacity-50 m-5 border-indigo-500 transition-all hover:bg-white hover:shadow-lg hover:border-transparent"
         onSubmit={(e) => handleLogin(e)}
       >
         <div className="mb-4">
