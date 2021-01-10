@@ -25,12 +25,12 @@ function App() {
   const [token, setToken] = useState(null);
   const [user, setUser] = useState(null);
   const cookies = new Cookies();
-  const getUser = async (token) => {
-    const { data, err } = await UserAPI.getUser(token);
+  const updateUser = async (token) => {
+    const { data, err } = await UserAPI.updateUser(token);
 
     if (err) {
       console.error(err);
-      console.log('getUser error');
+      console.log('updateUser error');
     } else {
       setUser(data);
     }
@@ -43,7 +43,7 @@ function App() {
       expires: new Date(expires),
     });
     setToken(token);
-    getUser(token);
+    updateUser(token);
 
     if (callback) {
       callback();
@@ -64,7 +64,7 @@ function App() {
     const token = cookies.get('token');
 
     if (token) {
-      getUser(token);
+      updateUser(token);
       setToken(token);
     }
 
@@ -79,6 +79,7 @@ function App() {
             value={{
               token,
               user,
+              updateUser,
               logIn,
               logOut,
               setUser,

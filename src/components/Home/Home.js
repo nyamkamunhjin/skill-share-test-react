@@ -13,11 +13,16 @@ const Home = (props) => {
   const [searchInput, setSearchInput] = useState('');
   const [results, setResults] = useState([]);
   const history = useHistory();
+
   const handleSearch = async (searchInput) => {
     const { data, err } = await PostAPI.searchPost(searchInput, 10);
     setResults(data);
     // console.log(data);
   };
+
+  useEffect(() => {
+    handleSearch(searchInput);
+  }, []);
 
   return (
     <div className="flex flex-col items-center">

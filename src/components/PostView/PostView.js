@@ -6,16 +6,27 @@ import { formatDate } from '../../functions';
  * @function PostView
  **/
 
-const PostView = ({ result, admin = false, showStatus = false }) => {
+const PostView = ({
+  result,
+  admin = false,
+  showStatus = false,
+  clickable = true,
+}) => {
   const history = useHistory();
+
   return (
     <div className="bg-indigo-50 rounded-md my-2 p-2 w-full max-w-2xl flex flex-col items-start shadow-md">
       <div className="flex justify-between w-full">
         <div>
           <p
-            className="text-2xl text-left text-black font-bold hover:text-purple-400 cursor-pointer"
-            onClick={() =>
-              history.push(`/${admin ? 'pending' : 'post'}/${result._id}`)
+            className={`text-2xl text-left text-black font-bold ${
+              clickable && `hover:text-purple-400 cursor-pointer`
+            }`}
+            onClick={
+              clickable
+                ? () =>
+                    history.push(`/${admin ? 'pending' : 'post'}/${result._id}`)
+                : null
             }
           >
             {result.title}

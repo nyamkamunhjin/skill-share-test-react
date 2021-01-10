@@ -36,7 +36,7 @@ const Login = (props) => {
       <p className="text-3xl">Login</p>
 
       <form
-        className="group w-full max-w-sm p-5 border rounded-xl border-opacity-50 m-5 border-indigo-500 transition-all hover:bg-white hover:shadow-lg hover:border-transparent"
+        className="group w-full max-w-sm p-5 border rounded-xl border-opacity-50 m-5 border-indigo-500 transition-all hover:bg-indigo-50 hover:shadow-lg hover:border-transparent"
         onSubmit={(e) => handleLogin(e)}
       >
         <div className="mb-4">

@@ -55,8 +55,8 @@ const CustomEditor = ({
   });
 
   const onSaveContent = (content) => {
-    if (initialContent && bindContent) {
-      bindContent(initialContent);
+    if (content && bindContent) {
+      bindContent(content);
     }
 
     console.log('saving content', content);

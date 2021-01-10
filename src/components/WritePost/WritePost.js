@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import PostAPI from '../../api/PostAPI';
 import context from '../../context/context';
 import CustomEditor from '../Editor/CustomEditor';
@@ -11,6 +12,7 @@ import CustomEditor from '../Editor/CustomEditor';
 const WritePost = (props) => {
   const [content, setContent] = useState(null);
   const [titleContent, setTitleContent] = useState(null);
+  const history = useHistory();
   const [title, setTitle] = useState(null);
   const { token } = useContext(context);
   const handleSubmit = () => {
@@ -29,6 +31,7 @@ const WritePost = (props) => {
       )
         .then(({ data }) => {
           console.log(data);
+          history.push('/dashboard');
           sessionStorage.removeItem('draftail:title');
           sessionStorage.removeItem('draftail:content');
         })

@@ -103,12 +103,15 @@ export default function Post() {
       {post && (
         <div className="mt-2 mx-auto max-w-screen-md">
           <div className="author-info flex flex-col items-start mx-3">
-            <p>
-              By {post.author.firstName} {post.author.lastName}
-            </p>
-            <p>
-              <b>on {formatDate(post.createdAt)}</b>
-            </p>
+            <div className="my-4 w-full flex justify-start items-center">
+              <p className="text-sm mx-1">Written by </p>
+              <p className="mx-1 font-bold text-indigo-500">
+                {post.author.firstName} {post.author.lastName}
+              </p>
+              <p className="text-sm text-gray-800 font-bold ml-auto">
+                {formatDate(post.createdAt)}
+              </p>
+            </div>
           </div>
           <CustomEditor readOnly={true} post={post} />
           <div className="likes my-4 mx-3 flex items-center">

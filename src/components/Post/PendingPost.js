@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import PostAPI from '../../api/PostAPI';
 import context from '../../context/context';
 import { formatDate } from '../../functions';
@@ -9,7 +9,7 @@ export default function PendingPost() {
   let { id } = useParams();
   const { user, token } = useContext(context);
   const [post, setPost] = useState(null);
-
+  const history = useHistory();
   const fetchPost = async (id) => {
     const { data, err } = await PostAPI.adminGetPostById(id, token);
     console.log({ data, err });
@@ -28,6 +28,7 @@ export default function PendingPost() {
       },
       token
     );
+    history.push('/dashboard');
   };
 
   const handleDeclineButton = () => {
@@ -38,6 +39,7 @@ export default function PendingPost() {
       },
       token
     );
+    history.push('/dashboard');
   };
 
   useEffect(() => {

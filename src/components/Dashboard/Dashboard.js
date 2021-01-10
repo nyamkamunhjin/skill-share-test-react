@@ -5,10 +5,10 @@ import context from '../../context/context';
 import PostView from '../PostView/PostView';
 
 export default function Dashboard(props) {
-  const { user, token } = useContext(context);
+  const { user, token, updateUser } = useContext(context);
   const [pendingPosts, setPendingPosts] = useState([]);
   const [yourPosts, setYourPosts] = useState([]);
-
+  const [filteredPosts, setFilteredPosts] = useState([]);
   const fetchPendingPosts = async (token) => {
     const { data, err } = await PostAPI.adminGetPosts(token);
 
@@ -22,6 +22,18 @@ export default function Dashboard(props) {
     if (err) {
     } else {
       setYourPosts(data);
+      setFilteredPosts(data);
+    }
+  };
+
+  const handlePostFilter = async (event) => {
+    const filter = event.target.value.toLowerCase();
+    console.log(filter);
+
+    if (filter === 'all') {
+      setFilteredPosts(yourPosts);
+    } else {
+      setFilteredPosts(yourPosts.filter((post) => post.approved === filter));
     }
   };
 
@@ -29,6 +41,7 @@ export default function Dashboard(props) {
     if (user.userType === 'Admin') {
       fetchPendingPosts(token);
     }
+    updateUser(token);
     fetchYourPosts(token);
   }, []);
 
@@ -37,32 +50,44 @@ export default function Dashboard(props) {
       <div className="personal-stats flex justify-start overflow-auto overflow-x-hidden border-b-4">
         <div className="salary m-2 rounded shadow hover:shadow-lg w-36 h-24 grid place-items-center bg-indigo-100">
           <p>
-            <b>Total salary</b>
+            <b>Monthly Income</b>
           </p>
-          <p>500$</p>
+          <p>{user.reputationPoint * 150}₮</p>
         </div>
         <div className="reputation m-2 rounded shadow hover:shadow-lg w-36 h-24 grid place-items-center bg-indigo-100">
           <p>
             <b>Your reputation</b>
           </p>
-          <p>151</p>
+          <p>{user.reputationPoint} points</p>
         </div>
       </div>
       <div className="flex flex-wrap md:flex-nowrap justify-start">
         <div className="your-posts w-full md:w-6/12 max-h-96 md:max-h-full  overflow-auto overflow-x-hidden m-2 rounded shadow hover:shadow-lg p-2 bg-indigo-100">
-          <h3>
-            <b>Your posts</b>
-            {yourPosts.length !== 0 &&
-              yourPosts.map((post, index) => (
-                <PostView result={post} key={index} showStatus={true} />
-              ))}
-          </h3>
+          <div className="w-full flex justify-between">
+            <p className="text-2xl font-bold ">Your posts</p>
+            <select
+              className="rounded outline-none"
+              onChange={handlePostFilter}
+            >
+              <option>All</option>
+              <option>Approved</option>
+              <option>Pending</option>
+              <option>Declined</option>
+            </select>
+          </div>
+          {filteredPosts.length !== 0 &&
+            filteredPosts.map((post, index) => (
+              <PostView
+                result={post}
+                key={index}
+                showStatus={true}
+                clickable={post.approved === 'approved'}
+              />
+            ))}
         </div>
         {user.userType === 'Admin' && (
           <div className="pending-posts flex flex-col items-center m-2 rounded shadow hover:shadow-lg p-2 w-full md:w-6/12 max-h-96 md:max-h-full overflow-auto bg-indigo-100">
-            <h3>
-              <b>Pending posts</b>
-            </h3>
+            <p className="text-2xl text-yellow-500 font-bold">Pending posts</p>
             {pendingPosts.length !== 0 &&
               pendingPosts.map((post, index) => (
                 <PostView result={post} key={index} admin={true} />
