@@ -12,8 +12,8 @@ export default function Post() {
   const [post, setPost] = useState(null);
   const [likeToggle, setLikeToggle] = useState(false);
   const [usedLike, setUsedLike] = useState(false);
-  // const [likes, setLikes] = useState([]);
-  const commentRef = useRef();
+  const [comment, setComment] = useState('');
+
   const fetchPost = async (id) => {
     const { data, err } = await PostAPI.getPostById(id);
     console.log({ data, err });
@@ -35,12 +35,12 @@ export default function Post() {
 
   const handleAddComment = async (event) => {
     event.preventDefault();
-    console.log(commentRef.current.value);
+    console.log(comment);
 
     const { data, err } = await PostAPI.addComment(
       {
         postId: id,
-        comment: commentRef.current.value,
+        comment,
         userId: user ? user._id : null,
       },
       token
@@ -49,6 +49,7 @@ export default function Post() {
     if (err) {
     } else {
       console.log('added comment', data);
+      setComment('');
       setPost(data);
     }
   };
@@ -135,10 +136,11 @@ export default function Post() {
                   Comment
                 </label>
                 <textarea
+                  value={comment}
+                  onChange={(e) => setComment(e.target.value)}
                   className="border border-gray-400 appearance-none rounded w-full p-2 mt-1 focus:border-indigo-600 focus: outline-none active:border-indigo-600"
                   type="text"
                   placeholder="Comment..."
-                  ref={commentRef}
                   spellCheck={false}
                 />
               </div>
