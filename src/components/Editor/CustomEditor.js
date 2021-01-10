@@ -1,10 +1,5 @@
-import {
-  BLOCK_TYPE,
-  DraftailEditor,
-  ENTITY_TYPE,
-  INLINE_STYLE,
-} from 'draftail';
-import { EditorState, convertFromRaw, convertToRaw, RichUtils } from 'draft-js';
+import { BLOCK_TYPE, DraftailEditor, INLINE_STYLE } from 'draftail';
+import { EditorState, convertFromRaw, convertToRaw } from 'draft-js';
 import createInlineToolbarPlugin, {
   Separator,
 } from 'draft-js-inline-toolbar-plugin';
@@ -21,7 +16,7 @@ import {
   CodeBlockButton,
 } from 'draft-js-buttons';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import 'draft-js/dist/Draft.css';
 import 'draftail/dist/draftail.css';

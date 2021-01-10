@@ -1,7 +1,6 @@
-import React, { useContext, useRef } from 'react';
+import React, { useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 import UserAPI from '../../api/UserAPI';
-import context from '../../context/context';
 
 /**
  * @author
@@ -15,7 +14,6 @@ const Register = (props) => {
   const lastNameElRef = useRef('');
 
   const history = useHistory();
-  const { logIn } = useContext(context);
 
   const handleLogin = async (e) => {
     e.preventDefault();

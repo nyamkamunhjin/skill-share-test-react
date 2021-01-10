@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { HiSearch } from 'react-icons/hi';
-import { useHistory } from 'react-router-dom';
 import PostAPI from '../../api/PostAPI';
-import { formatDate } from '../../functions';
+
 import PostView from '../PostView/PostView';
 /**
  * @author
@@ -12,7 +11,6 @@ import PostView from '../PostView/PostView';
 const Home = (props) => {
   const [searchInput, setSearchInput] = useState('');
   const [results, setResults] = useState([]);
-  const history = useHistory();
 
   const handleSearch = async (searchInput) => {
     const { data, err } = await PostAPI.searchPost(searchInput, 10);

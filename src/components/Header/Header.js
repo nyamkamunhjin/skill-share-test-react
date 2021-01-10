@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import context from '../../context/context';
-import { redirect } from '../../functions';
 
 /**
  * @author

@@ -1,11 +1,4 @@
-import { Editor, EditorState } from 'draft-js';
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import PostAPI from '../../api/PostAPI';
 import { formatDate } from '../../functions';
