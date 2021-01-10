@@ -14,7 +14,7 @@ const Header = (props) => {
   const { user, logOut } = useContext(context);
 
   return (
-    <nav className="py-1 flex flex-row justify-center items-center w-full shadow-lg">
+    <nav className="py-1 flex flex-row justify-center items-center w-full shadow-lg bg-indigo-50">
       <div className="w-full max-w-screen-lg mx-auto px-2 flex flex-row justify-between items-center">
         <ul className="flex flex-row items-center my-3">
           <li className="mx-3 hover:text-indigo-600 active:text-indigo-600">

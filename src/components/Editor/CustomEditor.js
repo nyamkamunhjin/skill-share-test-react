@@ -99,7 +99,7 @@ const CustomEditor = ({
           readOnly={readOnly}
           editorState={editorState}
           onChange={!readOnly ? onSaveTitle : null}
-          placeholder="Your title..."
+          placeholder={!readOnly ? 'Your title...' : ''}
           topToolbar={null}
         />
       </div>
@@ -108,7 +108,7 @@ const CustomEditor = ({
         onSave={!readOnly ? onSaveContent : null}
         readOnly={readOnly}
         stripPastedStyles={true}
-        placeholder="Type something..."
+        placeholder={!readOnly ? 'Type something...' : ''}
         plugins={[inlineToolbarPlugin]}
         topToolbar={null}
         blockTypes={[

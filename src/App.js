@@ -24,7 +24,7 @@ import WritePost from './components/WritePost/WritePost';
 function App() {
   const [token, setToken] = useState(null);
   const [user, setUser] = useState(null);
-
+  const cookies = new Cookies();
   const getUser = async (token) => {
     const { data, err } = await UserAPI.getUser(token);
 
@@ -38,7 +38,7 @@ function App() {
 
   const logIn = ({ token, expires }, callback) => {
     // console.log({ token, expires });
-    new Cookies().set('token', token, {
+    cookies.set('token', token, {
       path: '/',
       expires: new Date(expires),
     });
@@ -51,7 +51,7 @@ function App() {
   };
 
   const logOut = (callback) => {
-    new Cookies().remove('token');
+    cookies.remove('token');
     setToken(null);
     setUser(null);
 
@@ -61,7 +61,7 @@ function App() {
   };
 
   useEffect(() => {
-    const token = new Cookies().get('token');
+    const token = cookies.get('token');
 
     if (token) {
       getUser(token);

@@ -41,4 +41,16 @@ const updateUser = async (token, update) => {
   );
 };
 
-export default { signIn, getUser, signUp, updateUser };
+const getUserPosts = async (token) => {
+  return await resolver(
+    axios
+      .get(`${process.env.REACT_APP_BACKEND_URL}/api/user/posts`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => res.data)
+  );
+};
+
+export default { signIn, getUser, signUp, updateUser, getUserPosts };

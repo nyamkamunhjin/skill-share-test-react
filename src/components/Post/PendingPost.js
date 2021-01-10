@@ -34,7 +34,7 @@ export default function PendingPost() {
     PostAPI.adminUpdatePost(
       id,
       {
-        approved: 'decline',
+        approved: 'declined',
       },
       token
     );

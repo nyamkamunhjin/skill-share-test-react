@@ -80,6 +80,62 @@ const adminUpdatePost = async (id, values, token) => {
   );
 };
 
+const addComment = async (values, token) => {
+  return await resolver(
+    axios
+      .post(
+        `${process.env.REACT_APP_BACKEND_URL}/api/post/addcomment`,
+        values,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => res.data)
+      .catch((err) => err.response.data)
+  );
+};
+
+const removeComment = async (values, token) => {
+  return await resolver(
+    axios
+      .delete(
+        `${process.env.REACT_APP_BACKEND_URL}/api/post/removecomment`,
+        values,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((res) => res.data)
+      .catch((err) => err.response.data)
+  );
+};
+
+const like = async (values, token) => {
+  return await resolver(
+    axios
+      .post(`${process.env.REACT_APP_BACKEND_URL}/api/post/like`, values, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => res.data)
+      .catch((err) => err.response.data)
+  );
+};
+
+const like_anon = async (values, token) => {
+  return await resolver(
+    axios
+      .post(`${process.env.REACT_APP_BACKEND_URL}/api/post/like-anon`, values)
+      .then((res) => res.data)
+      .catch((err) => err.response.data)
+  );
+};
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   addPost,
@@ -88,4 +144,8 @@ export default {
   adminGetPostById,
   adminGetPosts,
   adminUpdatePost,
+  addComment,
+  removeComment,
+  like,
+  like_anon,
 };
