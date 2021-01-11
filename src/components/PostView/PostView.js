@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { formatDate } from '../../functions';
+import moment from 'moment';
 /**
  * @author
  * @function PostView
@@ -48,12 +48,13 @@ const PostView = ({
           )}
         </div>
       </div>
-      <p>
-        <b>on {formatDate(result.createdAt)}</b>
-      </p>
-      <p>
-        By {result.author.firstName} {result.author.lastName}
-      </p>
+      <p className="text-sm font-bold">{moment(result.createdAt).fromNow()}</p>
+      <div className="flex">
+        <p className="mx-1">By</p>
+        <p className="text-indigo-500 font-bold mx-1">
+          {result.author.firstName} {result.author.lastName}
+        </p>
+      </div>
     </div>
   );
 };

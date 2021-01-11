@@ -19,6 +19,10 @@ export default function Post() {
     console.log({ data, err });
     if (err || data.success === false) {
     } else {
+      data.comments.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      );
+
       setPost(data);
       if (user && user._id) {
         console.log('data', data.likedUsers);
@@ -50,6 +54,9 @@ export default function Post() {
     } else {
       console.log('added comment', data);
       setComment('');
+      data.comments.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      );
       setPost(data);
     }
   };
